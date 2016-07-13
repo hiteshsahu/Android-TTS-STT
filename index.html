@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Text-to-speech---speech-to-text by hiteshsahu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Text-to-speech---speech-to-text</h1>
+      <h2 class="project-tagline">One line solution for Android Speech to Text and Text to Speech translation problems</h2>
+      <a href="https://github.com/hiteshsahu/Text-to-Speech---Speech-to-Text" class="btn">View on GitHub</a>
+      <a href="https://github.com/hiteshsahu/Text-to-Speech---Speech-to-Text/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/hiteshsahu/Text-to-Speech---Speech-to-Text/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="text-to-speech--speech-to-text" class="anchor" href="#text-to-speech--speech-to-text" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Text to Speech &amp; Speech to Text</h1>
+
+<h2>
+<a id="one-line-solution-for-android-text-to-speech-and-text-to-speech-conversion-for-android" class="anchor" href="#one-line-solution-for-android-text-to-speech-and-text-to-speech-conversion-for-android" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>One line solution for android Text to speech and text to Speech conversion for Android.</h2>
+
+<p><strong>Project demonstarting how to :-</strong></p>
+
+<ul>
+<li>Convert Text to speech ins Android</li>
+<li>Convert Speech to text without Prompting dialog</li>
+<li>Handling errror and Updating UI</li>
+<li>Sharing text content over social media</li>
+<li>Voice search using Speech to text </li>
+</ul>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>Translator used factory pattern to create translators and does job in one line</p>
+
+<p><strong>Speech to Text</strong> :- One line solution</p>
+
+<pre><code>            TranslatorFactory.getInstance().getTranslator(TranslatorFactory.TRANSLATOR_TYPE.SPEECH_TO_TEXT, HomeActivity.this)
+                                          .initialize("Hello There", HomeActivity.this);
+</code></pre>
+
+<p><strong>Text to Speech</strong> :- One line solution</p>
+
+<pre><code>             TranslatorFactory.getInstance().getTranslator(TranslatorFactory.TRANSLATOR_TYPE.TEXT_TO_SPEECH, HomeActivity.this)
+                                             .initialize((null != message &amp;&amp; !message ? message : "Invalid Input"), HomeActivity.this);
+</code></pre>
+
+<p><strong>Error Handling</strong> :- make your view/Activity implement ConversionCallaback</p>
+
+<pre><code>public class HomeActivity extends AppCompatActivity implements ConversionCallaback {
+</code></pre>
+
+<p>override this callabacks</p>
+
+<pre><code>@Override
+public void onSuccess(String result) {
+    Toast.makeText(this, "Result " + result, Toast.LENGTH_SHORT).show();
+}
+
+@Override
+public void onCompletion() {
+    Toast.makeText(this, "Done ", Toast.LENGTH_SHORT).show();
+
+}
+
+@Override
+public void onErrorOccured(String errorMessage) {
+   Toast.makeText(this, "Error " + errorMessage, Toast.LENGTH_SHORT).show();
+}
+</code></pre>
+
+<h2>
+<a id="screenshots-of-demo-screen" class="anchor" href="#screenshots-of-demo-screen" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Screenshots of Demo screen</h2>
+
+<p>For demo import and app in Android Studio</p>
+
+<p>*<em>Text to speech *</em></p>
+
+<p><img src="https://github.com/hiteshsahu/Text-to-Speech---Speech-to-Text/blob/master/Art/text_to_speech.png" alt="Alt text" title="tts"></p>
+
+<p>*<em>Speech to Text *</em></p>
+
+<p><img src="https://github.com/hiteshsahu/Text-to-Speech---Speech-to-Text/blob/master/Art/speech_to_text.png" alt="Alt text" title="stt"></p>
+
+<p>**Process converted output eg. Share converted text on social media</p>
+
+<p><img src="https://github.com/hiteshsahu/Text-to-Speech---Speech-to-Text/blob/master/Art/share.png" alt="Alt text" title="share"></p>
+
+<p>**Real time error Handling</p>
+
+<p><img src="https://github.com/hiteshsahu/Text-to-Speech---Speech-to-Text/blob/master/Art/error.png" alt="Alt text" title="error"></p>
+
+<h2>
+<a id="use-in-your-project" class="anchor" href="#use-in-your-project" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Use in your project</h2>
+
+<p>Simply drop translation_engine package in your project and start using one liners.</p>
+
+<p>Copyright 2015 Hitesh Kumar Sahu</p>
+
+<p>Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p>
+
+<pre><code>http://www.apache.org/licenses/LICENSE-2.0
+</code></pre>
+
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/hiteshsahu/Text-to-Speech---Speech-to-Text">Text-to-speech---speech-to-text</a> is maintained by <a href="https://github.com/hiteshsahu">hiteshsahu</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
