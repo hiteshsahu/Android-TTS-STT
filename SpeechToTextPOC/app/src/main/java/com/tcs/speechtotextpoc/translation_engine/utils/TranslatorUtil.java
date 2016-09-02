@@ -51,13 +51,21 @@ public class TranslatorUtil {
         return message;
     }
 
-    public static boolean findString(ArrayList<String> data, String stringToMatch) {
 
-        if (null != data) {
+    /**
+     * Check if input matches
+     *
+     * @param listOfPossibleMatches list of string  with possible match
+     * @param stringToMatch         string you want to match list
+     * @return true if matched else false
+     */
+    public static boolean findString(ArrayList<String> listOfPossibleMatches, String stringToMatch) {
 
-            for (String transaltrion : data) {
+        if (null != listOfPossibleMatches) {
 
-                if (transaltrion.contains(stringToMatch)) {
+            for (String transaltion : listOfPossibleMatches) {
+
+                if (transaltion.contains(stringToMatch)) {
 
                     return true;
                 }
@@ -66,11 +74,17 @@ public class TranslatorUtil {
         return false;
     }
 
-    public static void share(String text, Activity activity) {
+    /**
+     * Share on social media
+     *
+     * @param messageToShare message To Share
+     * @param activity       context
+     */
+    public static void share(String messageToShare, Activity activity) {
 
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.setType("text/plain");
-        shareIntent.putExtra(Intent.EXTRA_TEXT, text);
+        shareIntent.putExtra(Intent.EXTRA_TEXT, messageToShare);
         activity.startActivity(Intent.createChooser(shareIntent, "Share using"));
     }
 

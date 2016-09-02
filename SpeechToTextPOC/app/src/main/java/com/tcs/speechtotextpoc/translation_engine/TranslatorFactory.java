@@ -1,16 +1,20 @@
 package com.tcs.speechtotextpoc.translation_engine;
 
 import com.tcs.speechtotextpoc.translation_engine.translators.IConvertor;
-import com.tcs.speechtotextpoc.translation_engine.translators.SpeechToTextConvertor;
-import com.tcs.speechtotextpoc.translation_engine.translators.TextToSpechConvertor;
-import com.tcs.speechtotextpoc.translation_engine.utils.ConversionCallaback;
+import com.tcs.speechtotextpoc.translation_engine.translators.SpeechToTextConverter;
+import com.tcs.speechtotextpoc.translation_engine.translators.TextToSpeechConverter;
+import com.tcs.speechtotextpoc.translation_engine.utils.ConversionCallback;
 
 /**
  * Created by Hitesh on 12-07-2016.
+ * <p/>
+ * This Factory class return object of TTS or STT dependending on input enum TRANSLATOR_TYPE
  */
 public class TranslatorFactory {
 
     private static TranslatorFactory ourInstance = new TranslatorFactory();
+
+    public enum TRANSLATOR_TYPE {TEXT_TO_SPEECH, SPEECH_TO_TEXT}
 
     private TranslatorFactory() {
     }
@@ -19,21 +23,26 @@ public class TranslatorFactory {
         return ourInstance;
     }
 
-    public IConvertor getTranslator(TRANSLATOR_TYPE translator_type, ConversionCallaback conversionCallaback) {
+    /**
+     * Factory method to return object of STT or TTS
+     *
+     * @param translator_type
+     * @param conversionCallaback
+     * @return
+     */
+    public IConvertor getTranslator(TRANSLATOR_TYPE translator_type, ConversionCallback conversionCallaback) {
         switch (translator_type) {
             case TEXT_TO_SPEECH:
 
-                return new TextToSpechConvertor(conversionCallaback);
+                //Get Text to speech translator
+                return new TextToSpeechConverter(conversionCallaback);
 
             case SPEECH_TO_TEXT:
-                return new SpeechToTextConvertor(conversionCallaback);
+
+                //Get speech to text translator
+                return new SpeechToTextConverter(conversionCallaback);
         }
 
         return null;
     }
-
-
-    public enum TRANSLATOR_TYPE {TEXT_TO_SPEECH, SPEECH_TO_TEXT}
-
-
 }
