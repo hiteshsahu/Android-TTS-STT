@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 import com.tcs.speechtotextpoc.R;
 import com.tcs.speechtotextpoc.translation_engine.TranslatorFactory;
-import com.tcs.speechtotextpoc.translation_engine.utils.ConversionCallback;
+import com.tcs.speechtotextpoc.translation_engine.utils.ConversionCallaback;
 import com.tcs.speechtotextpoc.translation_engine.utils.TranslatorUtil;
 
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class HomeActivity extends AppCompatActivity implements ConversionCallback {
+public class HomeActivity extends AppCompatActivity implements ConversionCallaback {
 
     private static final int TTS = 0;
     private static final int STT = 1;
