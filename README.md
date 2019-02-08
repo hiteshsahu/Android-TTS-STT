@@ -69,7 +69,9 @@
 
 ## Screenshots of Demo screen
 
-![Alt text](https://github.com/hiteshsahu/Android-TTS-STT/blob/master/Art/demo.png "demo"){width=10%}.
+
+<img src="https://github.com/hiteshsahu/Android-TTS-STT/blob/master/Art/demo.png" width="300" />
+
 
 ## Use in your project
 
