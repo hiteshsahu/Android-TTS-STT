@@ -1,6 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Creator: Hitesh Sahu on 2/8/19 1:56 PM
-  ~ Last modified: 2/8/19 1:56 PM
+  ~ Creator: Hitesh Sahu on 2/8/19 2:48 PM
+  ~ Last modified: 2/8/19 2:48 PM
   ~ Copyright: All rights reserved Ⓒ 2019 http://hiteshsahu.com
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file    except in compliance with the License. You may obtain a copy of the License at
@@ -9,8 +10,5 @@
   -->
 
 <resources>
-    <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="fab_margin">16dp</dimen>
+    <color name="ic_launcher_background">#A62947</color>
 </resources>
