@@ -79,6 +79,8 @@
   
       <uses-permission android:name="android.permission.RECORD_AUDIO" />
       
+Reference: https://stackoverflow.com/questions/6316937/how-can-i-use-speech-recognition-without-the-annoying-dialog-in-android-phones      
+      
       
 ## Licence
 
