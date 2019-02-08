@@ -1,78 +1,78 @@
-# Text to Speech & Speech to Text
+# Android Easy Text to Speech & Speech to Text without annoying dialog(TTS & STT)
 
-##One line solution for android Text to speech and text to Speech conversion for Android.
+## Android TTS and STT is one line solution to convert text to speech(TTS) & speech to text(STT) in your Android App.
 
-**Project demonstarting how to :-**
-
-- Convert Text to speech ins Android
-- Convert Speech to text without Prompting dialog
-- Handling errror and Updating UI
-- Sharing text content over social media
-- Voice search using Speech to text 
+- Convert Speech to text without annoying dialog.
+- Convert Text to Speech with error handling and callbacks
 
 ## Usage 
 
-Translator used factory pattern to create translators and does job in one line
+       //SPEECH TO TEXT DEMO
+        speechToText.setOnClickListener({ view ->
 
-**Speech to Text** :- One line solution
+            Snackbar.make(view, "Speak now, App is listening", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show()
 
-                TranslatorFactory.getInstance().getTranslator(TranslatorFactory.TRANSLATOR_TYPE.SPEECH_TO_TEXT, HomeActivity.this)
-                                              .initialize("Hello There", HomeActivity.this);
-                                              
- **Text to Speech** :- One line solution
- 
-                 TranslatorFactory.getInstance().getTranslator(TranslatorFactory.TRANSLATOR_TYPE.TEXT_TO_SPEECH, HomeActivity.this)
-                                                 .initialize((null != message && !message ? message : "Invalid Input"), HomeActivity.this);
+            TranslatorFactory
+                    .instance
+                    .with(TranslatorFactory.TRANSLATORS.SPEECH_TO_TEXT,
+                            object : ConversionCallback {
+                                override fun onSuccess(result: String) {
+                                    sttOutput.text = result
+                                }
 
- **Error Handling** :- make your view/Activity implement ConversionCallaback
- 
-    public class HomeActivity extends AppCompatActivity implements ConversionCallaback {
- 
- 
- override this callabacks
- 
- 
-    @Override
-    public void onSuccess(String result) {
-        Toast.makeText(this, "Result " + result, Toast.LENGTH_SHORT).show();
-    }
+                                override fun onCompletion() {
+                                }
 
-    @Override
-    public void onCompletion() {
-        Toast.makeText(this, "Done ", Toast.LENGTH_SHORT).show();
+                                override fun onErrorOccurred(errorMessage: String) {
+                                    erroConsole.text = "Speech2Text Error: $errorMessage"
+                                }
 
-    }
+                            }).initialize("Speak Now !!", this@HomeActivity)
 
-    @Override
-    public void onErrorOccured(String errorMessage) {
-       Toast.makeText(this, "Error " + errorMessage, Toast.LENGTH_SHORT).show();
-    }
+        })
+
+
+        //TEXT TO SPEECH DEMO
+        textToSpeech.setOnClickListener({ view ->
+
+            val stringToSpeak :String = ttsInput.text.toString()
+
+            if (null!=stringToSpeak &&  stringToSpeak.isNotEmpty()) {
+
+                TranslatorFactory
+                        .instance
+                        .with(TranslatorFactory.TRANSLATORS.TEXT_TO_SPEECH,
+                                object : ConversionCallback {
+                                    override fun onSuccess(result: String) {
+                                    }
+
+                                    override fun onCompletion() {
+                                    }
+
+                                    override fun onErrorOccurred(errorMessage: String) {
+                                        erroConsole.text = "Text2Speech Error: $errorMessage"
+                                    }
+
+                                })
+                        .initialize(stringToSpeak, this)
+
+            } else {
+                ttsInput.setText("Invalid input")
+                Snackbar.make(view, "Please enter some text to speak", Snackbar.LENGTH_LONG).show()
+            }
+
+        })
+
 
 
 ##Screenshots of Demo screen
 
-For demo import and app in Android Studio
-
-**Text to speech **
-
-![Alt text](https://github.com/hiteshsahu/Text-to-Speech---Speech-to-Text/blob/master/Art/text_to_speech.png "tts")
-
-**Speech to Text **
-
-![Alt text](https://github.com/hiteshsahu/Text-to-Speech---Speech-to-Text/blob/master/Art/speech_to_text.png "stt")
-
-**Process converted output eg. Share converted text on social media
-
-![Alt text](https://github.com/hiteshsahu/Text-to-Speech---Speech-to-Text/blob/master/Art/share.png "share")
-
-**Real time error Handling
-
-![Alt text](https://github.com/hiteshsahu/Text-to-Speech---Speech-to-Text/blob/master/Art/error.png "error")
-
+![Alt text](https://github.com/hiteshsahu/Android-TTS-STT/blob/master/Art/demo.png "demo")
 
 ##Use in your project
 
-Simply drop translation_engine package in your project and start using one liners.
+Simply drop translation_engine package in your project and start using it.
 
 
 Copyright 2015 Hitesh Kumar Sahu
